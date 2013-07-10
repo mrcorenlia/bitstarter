@@ -81,11 +81,9 @@ if(require.main == module) {
        .option('-f, --file <html_file>', 'Path to index.html', clone(assertFileExists), HTMLFILE_DEFAULT)
        .option('-u, --url <url>', 'URL to html file')
        .parse(process.argv);
-    console.log("URL is: " + program.url);
 
     var checkJson;
     if(typeof program.url != 'undefined') {
-	console.log("Loading HTML file");
 	var html = "";
 	rest.get(program.url).on('complete', function(result) {
 	      if (result instanceof Error) {
@@ -99,8 +97,6 @@ if(require.main == module) {
 		  console.log(outJson);
 	      }
 	});
-	console.log(html);
-	//checkJson = loadHtmlFile(program.url);
     } else {
 	var checkJson = checkHtmlFile(program.file, program.checks);
 	var outJson = JSON.stringify(checkJson, null, 4);
