@@ -37,7 +37,7 @@ var assertFileExists = function(infile) {
 };
 
 var cheerioHtmlFile = function(htmlfile) {
-    return cherio.load(fs.readFileSync(htmlfile));
+    return cheerio.load(fs.readFileSync(htmlfile));
 };
 
 var loadChecks = function(checksfile) {
@@ -46,7 +46,7 @@ var loadChecks = function(checksfile) {
 
 var checkHtmlFile = function(htmlfile, checksfile) {
     $ = cheerioHtmlFile(htmlfile);
-    var checks = loadChecks(cheksfile).sort();
+    var checks = loadChecks(checksfile).sort();
     var out = {};
     for(var ii in checks) {
 	var present = $(checks[ii]).length > 0;
